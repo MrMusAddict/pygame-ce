@@ -260,7 +260,7 @@ if plat == 'win'
         dlls += sdl_lib_dir / '@0@.dll'.format(sdl)
 
         # SDL_image
-        if get_option('image').enabled()
+        if get_option('image').allowed()
             sdl_image_lib_dir = sdl_image_dir / 'lib' / arch_suffix
             pg_inc_dirs += fs.relative_to(sdl_image_dir / 'include', base_dir)
             pg_lib_dirs += sdl_image_lib_dir
@@ -281,7 +281,7 @@ if plat == 'win'
         endif
 
         # SDL_mixer
-        if get_option('mixer').enabled()
+        if get_option('mixer').allowed()
             sdl_mixer_lib_dir = sdl_mixer_dir / 'lib' / arch_suffix
             pg_inc_dirs += fs.relative_to(sdl_mixer_dir / 'include', base_dir)
             pg_lib_dirs += sdl_mixer_lib_dir
@@ -296,7 +296,7 @@ if plat == 'win'
         endif
 
         # SDL_ttf
-        if get_option('font').enabled()
+        if get_option('font').allowed()
             sdl_ttf_lib_dir = sdl_ttf_dir / 'lib' / arch_suffix
             pg_inc_dirs += fs.relative_to(sdl_ttf_dir / 'include', base_dir)
             pg_lib_dirs += sdl_ttf_lib_dir
@@ -304,12 +304,12 @@ if plat == 'win'
         endif
 
         # freetype, portmidi and porttime
-        if get_option('freetype').enabled()
+        if get_option('freetype').allowed()
             pg_inc_dirs += fs.relative_to(prebuilt_dir / 'include', base_dir)
             pg_lib_dirs += common_lib_dir
             dlls += common_lib_dir / 'freetype.dll'
         endif
-        if get_option('midi').enabled()
+        if get_option('midi').allowed()
             pg_inc_dirs += fs.relative_to(prebuilt_dir / 'include', base_dir)
             pg_lib_dirs += common_lib_dir
             dlls += common_lib_dir / 'portmidi.dll'
